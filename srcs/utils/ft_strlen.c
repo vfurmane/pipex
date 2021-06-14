@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 13:28:35 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/14 19:23:22 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/06/14 19:18:49 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/06/14 19:21:03 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "utils.h"
 
-# include <errno.h>
-# include <fcntl.h>
-# include <string.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include "utils.h"
+size_t	ft_strlen(const char *str)
+{
+	int	i;
 
-int	pipex_stderr_message(const char *str1, const char *str2, const char *str3,
-		unsigned char ret);
-
-#endif
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}

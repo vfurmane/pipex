@@ -6,12 +6,13 @@
 #    By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/14 13:23:55 by vfurmane          #+#    #+#              #
-#    Updated: 2021/06/14 13:31:24 by vfurmane         ###   ########.fr        #
+#    Updated: 2021/06/14 19:22:26 by vfurmane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
-SRCS		= $(addprefix srcs/, main.c)
+SRCS		= $(addprefix srcs/, main.c put.c \
+			  $(addprefix utils/, ft_strlen.c))
 OBJS		= $(SRCS:.c=.o)
 INCL		= $(addprefix -I , includes)
 CC			= clang
