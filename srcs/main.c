@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:28:04 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/14 19:29:51 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/14 19:39:04 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ int	main(int argc, char **argv, char **envp)
 	outfile_fd = open(argv[4], O_WRONLY);
 	if (outfile_fd == -1)
 		return (pipex_stderr_message(argv[4], ": ", strerror(errno), 1));
+	close(infile_fd);
+	close(outfile_fd);
 	return (0);
 }
