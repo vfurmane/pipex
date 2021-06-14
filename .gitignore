@@ -1,0 +1,5 @@
+*.o
+pipex
+*.out
+*.dSYM/
+.*.swp
