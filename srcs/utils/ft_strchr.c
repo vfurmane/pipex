@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 19:20:22 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/14 20:50:09 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/06/14 20:03:20 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/06/14 20:03:34 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
 
-# include <stdlib.h>
+char	*ft_strchr(const char *str, int chr)
+{
+	int	i;
 
-char	*ft_getenv(const char *name, char *const *envp);
-int		ft_strccmp(const char *str1, const char *str2, int chr);
-char	*ft_strchr(const char *str, int chr);
-size_t	ft_strlen(const char *str);
-
-#endif
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (unsigned char)chr)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if ((unsigned char)chr == '\0')
+		return ((char *)&str[i]);
+	return (NULL);
+}

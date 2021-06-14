@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_strccmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/14 19:20:22 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/14 20:50:09 by vfurmane         ###   ########.fr       */
+/*   Created: 2021/06/14 20:02:43 by vfurmane          #+#    #+#             */
+/*   Updated: 2021/06/14 20:55:32 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "utils.h"
 
-# include <stdlib.h>
+int	ft_strccmp(const char *str1, const char *str2, int chr)
+{
+	size_t	i;
 
-char	*ft_getenv(const char *name, char *const *envp);
-int		ft_strccmp(const char *str1, const char *str2, int chr);
-char	*ft_strchr(const char *str, int chr);
-size_t	ft_strlen(const char *str);
-
-#endif
+	i = 0;
+	while ((str1[i] || str2[i]) && (str1[i] != chr && str2[i] != chr))
+	{
+		if (str1[i] != str2[i])
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+		i++;
+	}
+	return (0);
+}
