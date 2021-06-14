@@ -6,11 +6,13 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:28:35 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/14 13:29:03 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/14 15:43:52 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
+
+# include "unistd.h"
 
 #endif
