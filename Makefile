@@ -6,12 +6,12 @@
 #    By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/14 13:23:55 by vfurmane          #+#    #+#              #
-#    Updated: 2021/06/14 21:10:39 by vfurmane         ###   ########.fr        #
+#    Updated: 2021/06/14 22:18:07 by vfurmane         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
-SRCS		= $(addprefix srcs/, main.c put.c \
+SRCS		= $(addprefix srcs/, init.c main.c put.c \
 			  $(addprefix utils/, ft_free_array.c ft_getenv.c ft_memcpy.c ft_split.c ft_strccmp.c ft_strcdup.c ft_strchr.c ft_strlen.c))
 OBJS		= $(SRCS:.c=.o)
 INCL		= $(addprefix -I , includes)
