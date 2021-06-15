@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:28:35 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/14 22:17:51 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/15 15:55:56 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <unistd.h>
 # include "utils.h"
 
