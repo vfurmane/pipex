@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 13:28:35 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/15 15:55:56 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/15 22:52:55 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <errno.h>
 # include <fcntl.h>
+# include <stdint.h>
 # include <string.h>
 # include <sys/types.h>
 # include <sys/stat.h>
