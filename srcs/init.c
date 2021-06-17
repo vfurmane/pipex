@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/14 22:17:31 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/15 19:52:34 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/17 13:10:27 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	init_commands(char **argv, t_cmd *cmd1, t_cmd *cmd2)
 	cmd1->iofd[0] = open(argv[1], O_RDONLY);
 	if (cmd1->iofd[0] == -1)
 		return (pipex_stderr_message(argv[1], ": ", strerror(errno), 1));
-	cmd2->iofd[1] = open(argv[4], O_WRONLY | O_CREAT, 0644);
+	cmd2->iofd[1] = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (cmd2->iofd[1] == -1)
 		return (pipex_stderr_message(argv[4], ": ", strerror(errno), 1));
 	cmd1->args = ft_split(argv[2], ' ');
