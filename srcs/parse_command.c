@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:42:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/17 11:42:30 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/17 15:06:36 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ char	*get_command_path(const char *cmd, char **envp)
 {
 	int		i;
 	int		ret;
-	char	*PATH;
 	char	**path;
 
-	PATH = ft_getenv("PATH", envp);
-	path = ft_split(PATH, ':');
+	path = ft_split(ft_getenv("PATH", envp), ':');
 	if (path == NULL)
 		return ((void *)(uintptr_t)pipex_stderr_message("unexpected error: ",
 				strerror(errno), "", 0));
@@ -58,6 +56,7 @@ char	*get_command_path(const char *cmd, char **envp)
 		else
 			return (ft_strjoin(ft_strjoin(path[i], "/"), cmd));
 	}
+	ft_free_array(path);
 	return ((void *)(uintptr_t)pipex_stderr_message(cmd, ": command not found",
 			"", 0));
 }
