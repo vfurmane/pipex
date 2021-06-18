@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:42:00 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/17 15:06:36 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/18 10:37:09 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,19 @@ static int	is_command_in_path(const char *cmd, const char *path)
 	}
 }
 
+static char	*join_path_and_cmd(const char *path, const char *cmd,
+		char **path_arr)
+{
+	char	*path_slash;
+	char	*new_path;
+
+	path_slash = ft_strjoin(path, "/");
+	new_path = ft_strjoin(path_slash, cmd);
+	free(path_slash);
+	ft_free_array(path_arr);
+	return (new_path);
+}
+
 char	*get_command_path(const char *cmd, char **envp)
 {
 	int		i;
@@ -54,7 +67,7 @@ char	*get_command_path(const char *cmd, char **envp)
 		else if (ret == 0)
 			i++;
 		else
-			return (ft_strjoin(ft_strjoin(path[i], "/"), cmd));
+			return (join_path_and_cmd(path[i], cmd, path));
 	}
 	ft_free_array(path);
 	return ((void *)(uintptr_t)pipex_stderr_message(cmd, ": command not found",

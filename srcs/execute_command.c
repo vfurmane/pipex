@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:43:07 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/17 15:18:42 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/18 10:36:26 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	execute_command1(t_cmd *cmd, char **envp, int pipe_to_plug)
 		if (cmd->path == NULL)
 			exit(127);
 		execve(cmd->path, (char **)cmd->args, envp);
+		free(cmd->path);
 		exit(pipex_stderr_message(cmd->args[0], ": ", strerror(errno), 1));
 	}
 }
@@ -46,6 +47,7 @@ static void	execute_command2(t_cmd *cmd, char **envp, int pipe_to_plug)
 		if (cmd->path == NULL)
 			exit(127);
 		execve(cmd->path, (char **)cmd->args, envp);
+		free(cmd->path);
 		exit(pipex_stderr_message(cmd->args[0], ": ", strerror(errno), 1));
 	}
 }
