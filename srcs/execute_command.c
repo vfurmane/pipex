@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:43:07 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/17 13:59:59 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/17 15:18:42 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	create_commands_pipe(t_cmd *cmd1, t_cmd *cmd2)
 	cmd2->iofd[0] = fds[0];
 }
 
-static int	wait_all_processes_and_plug_pipe(t_cmd *cmd1)
+static int	wait_all_processes_and_plug_pipe(t_cmd *cmd1, t_cmd *cmd2)
 {
 	int			ret;
 	int			status;
@@ -74,7 +74,9 @@ static int	wait_all_processes_and_plug_pipe(t_cmd *cmd1)
 		ended_pid = wait(&status);
 		if (ended_pid == cmd1->pid)
 			close(cmd1->iofd[1]);
-		else if (ended_pid != -1)
+		else
+			close(cmd2->iofd[0]);
+		if (ended_pid == cmd2->pid)
 		{
 			if (WIFEXITED(status))
 				ret = WEXITSTATUS(status);
@@ -101,7 +103,7 @@ int	execute_pipe_command(t_cmd *cmd1, t_cmd *cmd2, char **envp)
 		create_commands_pipe(cmd1, cmd2);
 		execute_command1(cmd1, envp, cmd2->iofd[0]);
 		execute_command2(cmd2, envp, cmd1->iofd[1]);
-		ret = wait_all_processes_and_plug_pipe(cmd1);
+		ret = wait_all_processes_and_plug_pipe(cmd1, cmd2);
 		close(cmd1->iofd[0]);
 		close(cmd1->iofd[1]);
 		exit(ret);
