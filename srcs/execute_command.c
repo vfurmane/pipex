@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 11:43:07 by vfurmane          #+#    #+#             */
-/*   Updated: 2021/06/18 10:36:26 by vfurmane         ###   ########.fr       */
+/*   Updated: 2021/06/18 11:36:15 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ static void	execute_command1(t_cmd *cmd, char **envp, int pipe_to_plug)
 				"", 1));
 	else if (cmd->pid == 0)
 	{
+		close(pipe_to_plug);
+		if (cmd->iofd[0] == -1)
+			exit(1);
 		dup2(cmd->iofd[0], STDIN_FILENO);
 		dup2(cmd->iofd[1], STDOUT_FILENO);
-		close(pipe_to_plug);
 		cmd->path = get_command_path(cmd->args[0], envp);
 		if (cmd->path == NULL)
 			exit(127);
@@ -40,9 +42,11 @@ static void	execute_command2(t_cmd *cmd, char **envp, int pipe_to_plug)
 				"", 1));
 	else if (cmd->pid == 0)
 	{
+		close(pipe_to_plug);
+		if (cmd->iofd[1] == -1)
+			exit(1);
 		dup2(cmd->iofd[0], STDIN_FILENO);
 		dup2(cmd->iofd[1], STDOUT_FILENO);
-		close(pipe_to_plug);
 		cmd->path = get_command_path(cmd->args[0], envp);
 		if (cmd->path == NULL)
 			exit(127);
